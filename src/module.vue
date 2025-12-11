@@ -16,24 +16,12 @@
 		</div>
 
 		<div v-else ref="formWrapper" style="overflow: auto;">
-			<v-form
-				v-model="formData"
-				:collection="collection"
-				:loading="formState === 'submitting'"
-				ref="form"
-				:validationErrors=validationErrors
-				style="padding: 2px;"
-				:rawEditorEnabled="false"
-				:disabledMenu="true"
-			/>
+			<v-form v-model="formData" :collection="collection" :loading="formState === 'submitting'" ref="form"
+				:validationErrors=validationErrors style="padding: 2px;" :rawEditorEnabled="false" :disabledMenu="true" />
 
 			<div class="form-actions" style="padding-left: 2px;">
-				<v-button
-					:loading="formState === 'submitting'"
-					:disabled="formState === 'submitting'"
-					@click="submitForm"
-					full-width
-				>
+				<v-button :loading="formState === 'submitting'" :disabled="formState === 'submitting'" @click="submitForm"
+					full-width>
 					Submit
 				</v-button>
 			</div>
@@ -50,9 +38,6 @@ interface Props {
 	collection: string;
 	theme?: string;
 }
-
-// Remove the color scheme meta tag as it interferes with transparency.
-document.querySelector('meta[name="color-scheme"]')?.remove()
 
 // Define the possible states for our state machine
 type FormState = 'loading' | 'idle' | 'submitting' | 'submitted';
@@ -283,6 +268,9 @@ onMounted(async () => {
 	// Set up prefill listener early
 	setupPrefillListener();
 
+	// Remove the color scheme meta tag as it interferes with transparency.
+	document.querySelector('meta[name="color-scheme"]')?.remove()
+
 	// TODO: Figure out how to populate permissions
 	permissionsStore.permissions = {}
 	await collectionsStore.hydrate()
@@ -373,6 +361,6 @@ watch(formState, async () => {
 
 /* Remove with-fill capability */
 .v-form.with-fill {
-	grid-template-columns: [start] minmax(0,1fr) [half] minmax(0,1fr) [full];
+	grid-template-columns: [start] minmax(0, 1fr) [half] minmax(0, 1fr) [full];
 }
 </style>
