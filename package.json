@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thederf/directus-demo.git"
+    "url": "git+https://github.com/JoshTheDerf/directus-extension-embeddable-forms.git"
   },
   "type": "module",
   "files": [
